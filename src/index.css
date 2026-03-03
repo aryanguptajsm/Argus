@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* ── Custom Theme (replaces tailwind.config.js) ── */
+@theme {
+  --color-base: #050505;
+  --color-matrix-green: #00FF41;
+  --color-cyber-blue: #00D1FF;
+  --color-danger: #FF073A;
+  --color-warning: #FFB800;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ── Base Styles ── */
+body {
+  margin: 0;
+  font-family: var(--font-mono);
+  background-color: var(--color-base);
+  color: var(--color-matrix-green);
+  overflow: hidden;
+}
+
+/* ── Scanline Animation (lightweight) ── */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 6px;
+  background: rgba(0, 255, 65, 0.03);
+  opacity: 0.4;
+  animation: scanline 10s linear infinite;
+  pointer-events: none;
+  z-index: 50;
+  will-change: transform;
+}
+
+/* ── Glassmorphism Panels (lighter blur) ── */
+.glass-panel {
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 255, 65, 0.15);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.03);
+  contain: layout style paint;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 5, 5, 1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 65, 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 65, 0.5);
+}
+
+/* ── Leaflet Overrides ── */
+.leaflet-container {
+  background: #050505 !important;
+  font-family: var(--font-mono) !important;
+}
+
+/* ── Plane Icon Glow Effects ── */
+@keyframes soft-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px rgba(0, 209, 255, 0.5));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 8px rgba(0, 209, 255, 0.8));
+  }
+}
+
+@keyframes selected-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 65, 0.6));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(0, 255, 65, 1));
+  }
+}
+
+.plane-glow {
+  animation: soft-pulse 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.plane-glow-ground {
+  filter: drop-shadow(0 0 3px rgba(255, 184, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.plane-glow-selected {
+  animation: selected-pulse 2s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+/* ── HUD Glow ── */
+@keyframes hud-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.hud-text {
+  animation: hud-glow 4s ease-in-out infinite;
+  text-shadow: 0 0 4px rgba(0, 209, 255, 0.4);
+}
+
+/* ── Leaflet Popup Cyber Theme ── */
+.leaflet-popup-content-wrapper {
+  background: rgba(5, 5, 5, 0.92) !important;
+  border: 1px solid rgba(0, 209, 255, 0.3) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 15px rgba(0, 209, 255, 0.1), inset 0 0 8px rgba(0, 0, 0, 0.4) !important;
+  color: var(--color-matrix-green) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(5, 5, 5, 0.92) !important;
+  border: 1px solid rgba(0, 209, 255, 0.3) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--color-cyber-blue) !important;
+}
+
+/* ── Slide-in animation for panels ── */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: slide-in 0.25s ease-out;
+}
+
+/* ── Select dropdown styling ── */
+select option {
+  background: #0a0a0a;
+  color: var(--color-matrix-green);
+}
+
+/* ── Stat card hover effect ── */
+.stat-card {
+  will-change: transform;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.08);
+}
