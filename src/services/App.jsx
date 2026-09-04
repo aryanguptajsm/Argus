@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { useFlightData } from './hooks/useFlightData';
+import { useFlightData } from '../hooks/useFlightData';
 import { metersToFeet } from './services/opensky';
-import StatsGrid from './components/StatsGrid';
-import TerminalFeed from './components/TerminalFeed';
-import FlightMap from './components/Map';
-import SearchPanel from './components/SearchPanel';
-import FlightDetail from './components/FlightDetail';
+import StatsGrid from '../components/StatsGrid';
+import TerminalFeed from '../components/TerminalFeed';
+import FlightMap from '../components/Map';
+import SearchPanel from '../components/SearchPanel';
+import FlightDetail from '../components/FlightDetail';
 import { Loader, AlertTriangle, Radio } from 'lucide-react';
 
 function App() {

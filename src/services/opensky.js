@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 const CLIENT_ID = import.meta.env.VITE_OPENSKY_CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.VITE_OPENSKY_CLIENT_SECRET;
+//const CLIENT_SECRET = import.meta.env.VITE_OPENSKY_CLIENT_SECRET;
 
 const TOKEN_URL = '/api/auth/realms/opensky-network/protocol/openid-connect/token';
 const STATES_URL = '/api/opensky/api/states/all';
@@ -105,7 +105,7 @@ export async function fetchAllStates(bounds) {
     }
 
     const data = await res.json();
-
+    console.log(data)
     if (!data.states || !Array.isArray(data.states)) {
         return [];
     }
@@ -160,7 +160,7 @@ export async function fetchTrack(icao24) {
     const data = await res.json();
     if (!data || !data.path) return null;
 
-    // data.path is [[time, lat, lon, alt, track, onGround], ...]
+    // data.path is [[time, lat, lon, alt, track, onGround], ...
     return data.path.map(p => ({
         time: p[0],
         lat: p[1],
@@ -179,7 +179,7 @@ export function metersToFeet(m) {
     return Math.round(m * 3.28084);
 }
 
-/**
+/** 
  * Convert m/s to knots.
  */
 export function msToKnots(ms) {
