@@ -160,7 +160,7 @@ export async function fetchTrack(icao24) {
     const data = await res.json();
     if (!data || !data.path) return null;
 
-    // data.path is [[time, lat, lon, alt, track, onGround], ...
+    // data.path is [[time, lat, lon, alt, track, onGround], ...]
     return data.path.map(p => ({
         time: p[0],
         lat: p[1],
