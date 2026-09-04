@@ -152,7 +152,7 @@ function App() {
 
             {/* Footer */}
             <footer className="mt-3 pt-2 border-t border-matrix-green/30 text-[10px] opacity-40 flex justify-between flex-shrink-0">
-                <span>© 2077 ARGUS SYS // OPENSKY NETWORK DATA</span>
+                <span>© 2025 ARGUS SYS // OPENSKY NETWORK DATA</span>
                 <span>{filteredFlights.length.toLocaleString()} TARGETS / {stats.countries || 0} NATIONS</span>
             </footer>
         </div>
